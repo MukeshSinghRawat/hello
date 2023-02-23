@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Get current image tag
         id: step1
-        run: echo "CURRENT_IMAGE_TAG=date" >> "$GITHUB_OUTPUT"
+        run: echo "CURRENT_IMAGE_TAG=`date`" >> "$GITHUB_OUTPUT"
   
   job2:
     runs-on: ubuntu-latest
