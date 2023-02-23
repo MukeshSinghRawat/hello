@@ -31,5 +31,5 @@ jobs:
         run: echo Hello, world!
                
       - name: Grab the output from first step
-        if: ${{ steps.first_step.output != 'failure' }}
+        if: ${{ steps.first_step.output == 'failure' }}
         run: echo 'SUCCESS'
