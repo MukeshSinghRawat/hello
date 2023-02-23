@@ -28,12 +28,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         id: first_step
-        run: eccho Hello, world!
-        
-      - name: Run a bash for loop
-        if: ${{ always() }}
-        run: for i in 'QA' 'DEV'; do echo "$i"; done
-        
+        run: echo Hello, world!
+               
       - name: Grab the output from first step
-        if: ${{ failure() && steps.first_step.output != 'failure' }}
-        run: echo 'First step ran successfully'
+        if: ${{ steps.first_step.output == 'success' }}
+        run: echo 'SUCCESS'
