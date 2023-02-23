@@ -34,5 +34,5 @@ jobs:
         run: for i in 'QA' 'DEV'; do echo "$i"; done
         
       - name: Grab the output from first step
-        if: steps.first_step.output == 'success'
+        if: ${{ steps.first_step.output != 'failure' }}
         run: echo 'First step ran successfully'
