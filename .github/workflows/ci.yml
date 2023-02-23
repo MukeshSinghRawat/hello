@@ -31,6 +31,7 @@ jobs:
         run: eccho Hello, world!
         
       - name: Run a bash for loop
+        if: ${{ always() }}
         run: for i in 'QA' 'DEV'; do echo "$i"; done
         
       - name: Grab the output from first step
