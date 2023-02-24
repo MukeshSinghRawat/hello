@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Get current image tag
         id: step1
-        run: eccho "CURRENT_IMAGE_TAG=`date`" >> "$GITHUB_OUTPUT"
+        run: echo "CURRENT_IMAGE_TAG=`date`" >> "$GITHUB_OUTPUT"
   
   job2:
     runs-on: ubuntu-latest
@@ -31,12 +31,12 @@ jobs:
     steps:
     
       - name: do random 
-        if: ${{ failure() && steps.step1.output == 'failure' }}
-        run: echo `date`
+        id: job2_step1
+        run: eccho `date`
         
       - env:
           OUTPUT1: ${{needs.job1.outputs.output1}}
-        if: ${{ failure() && steps.step1.output == 'failure' }}
+        if: ${{ failure() && steps.job2_step1.output == 'failure' }}
         run: |
           echo "Today's date is $OUTPUT1"
           echo "We have a call on $OUTPUT1"
