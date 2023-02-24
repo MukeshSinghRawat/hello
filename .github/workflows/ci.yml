@@ -31,6 +31,7 @@ jobs:
     steps:
     
       - name: do random 
+        if: ${{ failure() && steps.step1.output == 'failure' }}
         run: echo `date`
         
       - env:
