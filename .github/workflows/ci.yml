@@ -37,7 +37,7 @@ jobs:
       - name: do random second   
         #env:
         #  OUTPUT1: ${{needs.job1.outputs.output1}}
-        if: ${{ failure() }}
+        if: ${{ failure() && steps.job2_step1.outcome != 'success' }}
         run: |
           echo "Today's date is $OUTPUT1"
           echo "We have a call on $OUTPUT1"
