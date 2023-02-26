@@ -35,7 +35,8 @@ jobs:
         run: echo "Hello random first"
         
       - name: print output
-        run: echo steps.job2_step1.outcome
+        if: steps.job2_step1.outcome == 'success'
+        run: echo "SUCCESS"
                   
       - name: do random second   
         env:
