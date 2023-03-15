@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: '16.x'
           
-      - name: Install dependencies (if any)
-        run: npm install
+#       - name: Install dependencies (if any)
+#         run: npm install
         
       - name: Execute .js scripts
         run: |
