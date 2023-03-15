@@ -23,9 +23,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-      
-      - name: List the repo folders 
-        run: ls
+          
+      - name: Install dependencies (if any)
+        run: npm install
         
       - name: Execute .js scripts
         run: |
