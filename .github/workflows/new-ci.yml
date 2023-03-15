@@ -24,7 +24,9 @@ jobs:
         with:
           node-version: '16.x'
       
-      - name: Execute .js scripts
-        run: |
-          node hello/scripts/javascripts/script1.js
-          node hello/scripts/javascripts/script2.js
+      - name: List the repo folders 
+        run: ls
+#       - name: Execute .js scripts
+#         run: |
+#           node hello/scripts/javascripts/script1.js
+#           node hello/scripts/javascripts/script2.js
