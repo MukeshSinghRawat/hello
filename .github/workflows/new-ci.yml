@@ -21,10 +21,10 @@ jobs:
         with:
           python-version: '3.x' 
           
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+#       - name: Setup Node
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16.x'
 
       # In this step, we will execute the python script which will run the ddl and dml js scripts. 
         
