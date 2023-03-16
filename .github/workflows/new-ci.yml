@@ -24,4 +24,4 @@ jobs:
       - name: Execute Py Script
         run: python ${{env.PY_SCRIPT_LOCATION}}
         env:
-          MY_SECRET_HOSTNAME: ${{secrets.MONGO_HOSTNAME}}
+          MY_SECRET_USERNAME: ${{env.MONGO_USERNAME}}
