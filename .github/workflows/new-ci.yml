@@ -22,4 +22,6 @@ jobs:
       # In this step, we will execute the python script which will run the ddl and dml js scripts. 
         
       - name: Execute Py Script
-        run: python ${{env.PY_SCRIPT_LOCATION}} --mongo_url ${{secrets.MONGO_HOSTNAME}}
+        run: python ${{env.PY_SCRIPT_LOCATION}}
+        env:
+          MY_SECRET_HOSTNAME: ${{secrets.MONGO_HOSTNAME}}
