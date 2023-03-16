@@ -8,9 +8,11 @@ mongo_username = os.environ['MY_SECRET_USERNAME']
 print(mongo_username)
 
 # block 2
-javascript_path=os.environment['JS_PATH']
-def execute_js(js_path):
-  execution = "node "+js_path
+javascript_path_1=os.environment['JS_PATH_1']
+javascript_path_2=os.environment['JS_PATH_2']
+
+def execute_js(js_path_1, js_path_2):
+  execution = "node "+js_path_1+" \nnode "+js_path_2
   os.system(execution)
   
-execute_js(javascript_path)
+execute_js(javascript_path_1, javascript_path_2)
