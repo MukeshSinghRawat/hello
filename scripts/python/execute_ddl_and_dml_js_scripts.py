@@ -12,9 +12,6 @@ js_list = []
 js_list.append(os.environ['JS_PATH_1'])
 js_list.append(os.environ['JS_PATH_2'])
 
-# javascript_path_1=os.environ['JS_PATH_1']
-# javascript_path_2=os.environ['JS_PATH_2']
-
 def execute_js():
   for paths in js_list:
     execution = "node "+paths
