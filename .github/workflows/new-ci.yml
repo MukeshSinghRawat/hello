@@ -1,36 +1,25 @@
-name: CI
+name: ddl-and-dml-js-scripts-execution
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env: 
+  PY_SCRIPT_LOCATION: scripts/python/execute_ddl_and_dml_js_scripts.py 
+
 jobs:
-  job1:
+  js-execution:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16.x'
-          
-#       - name: Install dependencies (if any)
-#         run: npm install
+          python-version: '3.x' 
+
+      # In this step, we will execute the python script which will run the ddl and dml js scripts. 
         
-      - name: who am i
-        run: whoami
-        
-      - name: Execute .js scripts
-        run: |
-          node scripts/javascripts/script1.js
-          node scripts/javascripts/script2.js
+      - name: Execute Py Script
+        run: python ${{env.PY_SCRIPT_LOCATION}}
