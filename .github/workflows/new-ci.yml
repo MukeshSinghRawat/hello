@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env: 
-  PY_SCRIPT_LOCATION: scripts/python/execute_ddl_and_dml_js_scripts.py 
+  PY_SCRIPT_PATH: scripts/python/execute_ddl_and_dml_js_scripts.py 
 
 jobs:
   js-execution:
@@ -22,7 +22,7 @@ jobs:
       # In this step, we will execute the python script which will run the ddl and dml js scripts. 
         
       - name: Execute Py Script
-        run: python ${{env.PY_SCRIPT_LOCATION}}
+        run: python ${{env.PY_SCRIPT_PATH}}
         env:
           MY_SECRET_USERNAME: ${{vars.MONGO_USERNAME}}
 
