@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
 # import the modules
-import os
-import sys 
-import json
-import pymongo
+# import os
+# import sys 
+# import json
+# import pymongo
 
 def print_hostname(hostname):
   new_hostname = hostname + '-custom'
