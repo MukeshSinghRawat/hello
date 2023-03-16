@@ -4,6 +4,6 @@
 import os
 
 
-mongo_url = os.environ['MY_SECRET_HOSTNAME']
+mongo_url = os.environ['MY_SECRET_USERNAME']
 
 print(mongo_url)
