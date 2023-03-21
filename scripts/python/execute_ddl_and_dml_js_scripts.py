@@ -15,7 +15,7 @@ container_id=os.environ['CONTAINER_ID']
 
 def execute_js(con_id):
   for paths in js_list:
-    execution = "docker cp "+paths+" "+con_id+":/"+paths+"\ndocker exec "+con_id+" mongosh "+paths+"\ndocker exec "+con_id+" mongosh --eval '''db.adminCommand("listDatabases")'''"
+    execution = "docker cp "+paths+" "+con_id+":/"+paths+"\ndocker exec "+con_id+" mongosh "+paths
     os.system(execution)
        
     
