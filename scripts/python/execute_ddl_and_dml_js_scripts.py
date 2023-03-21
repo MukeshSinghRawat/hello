@@ -3,18 +3,20 @@
 # import modules
 import os
 
-# # block 1
+# Testing the env variables
 # mongo_username = os.environ['MY_SECRET_USERNAME']
 # print(mongo_username)
 
-# block 2
+# Run the js script on the mongo
 js_list = []
 js_list.append(os.environ['JS_PATH_1'])
 js_list.append(os.environ['JS_PATH_2'])
+container_id=os.environ['CONTAINER_ID']
 
-def execute_js():
+def execute_js(con_id):
   for paths in js_list:
-    execution = "mongosh <"+paths
+    execution = "docker cp "+paths+" "+con_id+":/"+paths+"\ndocker exec "+con_id+" mongosh "+paths
     os.system(execution)
-
-execute_js()
+       
+    
+execute_js(container_id)
