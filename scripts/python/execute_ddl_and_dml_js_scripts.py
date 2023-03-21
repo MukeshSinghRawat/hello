@@ -15,9 +15,10 @@ container_id=os.environ['CONTAINER_ID']
 
 def execute_js(con_id):
   for paths in js_list:
-    basename=os.path.basename(paths)
-    execution = "docker cp "+paths+" "+con_id+":/"+basename+"\ndocker exec "+con_id+" mongosh "+paths
-    os.system(execution)
+    basename = os.path.basename(paths)
+#     execution = "docker cp "+paths+" "+con_id+":/"+basename+"\ndocker exec "+con_id+" mongosh "+paths
+#     os.system(execution)
+    print(basename, con_id)
        
     
 execute_js(container_id)
