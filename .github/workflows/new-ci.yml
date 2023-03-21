@@ -18,7 +18,8 @@ jobs:
           - 27017:27017
     steps:
       - name: Docker version
-        run: docker ps -a | grep -i mongo:latest | awk '{print $1}'
+        run: |
+          echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}') >> $GITHUB_ENV
         
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -36,4 +37,5 @@ jobs:
           MY_SECRET_USERNAME: ${{vars.MONGO_USERNAME}}
           JS_PATH_1: ${{env.JS_PATH_1}}
           JS_PATH_2: ${{env.JS_PATH_2}}
+          CONTAINER_ID: ${{env.CONTAINER_ID}}
 
