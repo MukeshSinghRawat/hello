@@ -18,7 +18,7 @@ jobs:
           - 27017:27017
     steps:
       - name: Docker version
-        run: docker --version
+        run: docker ps -a
         
       - name: Checkout repository
         uses: actions/checkout@v3
