@@ -11,8 +11,12 @@ env:
 jobs:
   js-execution:
     runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: docker.io/mongo:latest
+        ports:
+          - 27017:27017
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
