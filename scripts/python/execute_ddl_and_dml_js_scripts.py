@@ -3,9 +3,9 @@
 # import modules
 import os
 
-# block 1
-mongo_username = os.environ['MY_SECRET_USERNAME']
-print(mongo_username)
+# # block 1
+# mongo_username = os.environ['MY_SECRET_USERNAME']
+# print(mongo_username)
 
 # block 2
 js_list = []
