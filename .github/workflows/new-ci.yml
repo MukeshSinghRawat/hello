@@ -17,8 +17,8 @@ jobs:
         ports:
           - 27017:27017
     steps:
-      - name: Wait
-        run: sleep 120
+      - name: Docker version
+        run: docker --version
         
       - name: Checkout repository
         uses: actions/checkout@v3
