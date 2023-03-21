@@ -17,7 +17,7 @@ jobs:
         ports:
           - 27017:27017
     steps:
-      - name: Docker version
+      - name: Get the container ID
         run: |
           echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}')" >> $GITHUB_ENV
         
