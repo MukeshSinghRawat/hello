@@ -14,7 +14,7 @@ js_list.append(os.environ['JS_PATH_2'])
 
 def execute_js():
   for paths in js_list:
-    execution = "node "+paths
+    execution = "mongo <"+paths
     os.system(execution)
 
 execute_js()
