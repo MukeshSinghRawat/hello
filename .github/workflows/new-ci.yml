@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Docker version
         run: |
-          echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}') >> $GITHUB_ENV
+          echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}')" >> $GITHUB_ENV
         
       - name: Checkout repository
         uses: actions/checkout@v3
