@@ -1,4 +1,4 @@
-db = db.getSiblingDB('TWO');
-db.createCollection('CSS.masterData');
-db.createCollection('CSS.Wires.masterData');
-db.createCollection('CSS.InternationalWires.masterData');
+db = db.getSiblingDB('ABDUL');
+db.createCollection('CSS.ABDUL');
+db.createCollection('CSS.Wires.ABDUL');
+db.createCollection('CSS.InternationalWires.ABDUL');
