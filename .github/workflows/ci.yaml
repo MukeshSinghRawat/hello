@@ -21,4 +21,4 @@ jobs:
           url: https://vault.dev.jackhenryorigin.com
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
-          githubToken: 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
+          githubToken: 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
