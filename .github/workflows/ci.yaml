@@ -1,0 +1,23 @@
+name: My Workflow
+
+on: [push]
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Vault
+        uses: hashicorp/vault-action@master
+        with:
+          vault_addr: https://vault.dev.jackhenryorigin.com
+          github_token: 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
+          method: github
+
+      - name: Access Vault secret
+        run: |
+          # Use the Vault CLI to read the secret
+          VAULT_TOKEN=$(cat ~/.vault-token)
+          vault kv get secret/certPassword
