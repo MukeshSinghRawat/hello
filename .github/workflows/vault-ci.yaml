@@ -14,11 +14,21 @@ jobs:
     steps:   
       - uses: actions/checkout@v2
 
-      - name: Retrieve Secrets from Vault
-        uses: hashicorp/vault-action@v2.5.0
+#       - name: Retrieve Secrets from Vault
+#         uses: hashicorp/vault-action@v2.5.0
+#         with:
+#           url: https://vault.dev.jackhenryorigin.com
+#           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
+#           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
+#           secrets: |
+#             secret/data/entityservices/static-data certPassword
+
+      - name: Get Secrets from Vault
+        uses: hashicorp/vault-action@v2
         with:
           url: https://vault.dev.jackhenryorigin.com
-          token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
+          method: github
+          githubToken: ${{ secrets.VAULT_PAT }}
           secrets: |
             secret/data/entityservices/static-data certPassword
