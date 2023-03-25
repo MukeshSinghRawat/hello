@@ -18,7 +18,7 @@ jobs:
       - name: Login to Vault
         uses: hashicorp/vault-action@v2
         with:
-          url: https://vault.dev.jackhenryorigin.com:8200
+          url: https://vault.dev.jackhenryorigin.com/
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
           githubToken: ${{ secrets.VAULT_PAT }}
