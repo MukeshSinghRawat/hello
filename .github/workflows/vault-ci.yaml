@@ -23,7 +23,7 @@ jobs:
           method: github
           githubToken: ${{ secrets.VAULT_PAT }}
           secrets: |
-            entityservices/entity-static-data/Mongo certPassword | PASSWORD
+            secret/entityservices/entity-static-data/Mongo certPassword | PASSWORD
       
       - name: Print the PASSWORD
         run: echo "${{ env.PASSWORD }}"
