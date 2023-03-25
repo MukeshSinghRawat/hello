@@ -22,7 +22,4 @@ jobs:
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           secrets: |
-            secret/entityservices/entity-static-data/Mongo x509ConnectionString | connection_string
-
-      - name: Use Secret
-        run: echo "${{ env.connection_string }}"
+            secret/entityservices/entity-static-data/Mongo x509ConnectionString
