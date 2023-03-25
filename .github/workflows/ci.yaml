@@ -5,7 +5,7 @@ on:
 
   push:
     branches:
-      - main
+      - get-secret-from-vault-br
 
 jobs:
   vault-secret:
@@ -21,4 +21,9 @@ jobs:
           url: https://vault.dev.jackhenryorigin.com
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
-          githubToken: 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
+          githubToken: ${{ secrets.VAULT_PAT }}
+          secrets: |
+            entityservices/entity-static-data/Mongo certPassword | PASSWORD
+      
+      - name: Print the PASSWORD
+        run: echo "${{ env.PASSWORD }}"
