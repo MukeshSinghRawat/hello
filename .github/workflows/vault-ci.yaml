@@ -20,6 +20,7 @@ jobs:
           url: https://vault.dev.jackhenryorigin.com
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
+          exportEnv: true
           secrets: |
-            secret/data/entityservices/static-data certPassword
+            secret/data/entityservices/static-data certPassword | PASSWORD
 
