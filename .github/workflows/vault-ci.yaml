@@ -21,6 +21,7 @@ jobs:
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           exportEnv: true
+          tlsSkipVerify: false
           secrets: |
             secret/data/entityservices/static-data certPassword | PASSWORD
 
