@@ -16,7 +16,7 @@ jobs:
 
       - name: Retrieve Secrets from Vault
         id: import-secrets
-        uses: hashicorp/vault-action@v2.4.0
+        uses: hashicorp/vault-action@v2.5.0
         with:
           url: https://vault.dev.jackhenryorigin.com/ui/vault
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
