@@ -21,11 +21,4 @@ jobs:
           url: https://vault.dev.jackhenryorigin.com/ui/vault
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
-          secrets: |
-            secret/data/entityservices/static-data certPassword | PASSWORD
-            
-      - name: Step following 'Import Secrets'
-        run: |
-          touch secrets.json
-          echo "${{ toJson(steps.import-secrets.outputs) }}" >> secrets.json
-
+          
