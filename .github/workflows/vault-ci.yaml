@@ -5,7 +5,7 @@ on:
 
   push:
     branches:
-      - get-secret-from-vault-br
+      - main
 
 jobs:
   vault-secret:
