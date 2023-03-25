@@ -12,15 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:   
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Login to Vault
-        uses: hashicorp/vault-action@v2.5.0
+      - name: Retrieve Secrets from Vault
+        uses: hashicorp/vault-action@v2
         with:
           url: https://vault.dev.jackhenryorigin.com
           token: 'hvs.CAESILat89YjkzSl0vzjQlNYkF26YgAqeWETnb_pl0hvjBnUGh4KHGh2cy5jTXlKQ0dWTGVhU3IwVEtLekIxUksyQzM'
-#           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
+          caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           secrets: |
             secret/data/entityservices/static-data certPassword
-
