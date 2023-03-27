@@ -23,6 +23,6 @@ jobs:
           method: github
           githubToken: ${{ secrets.VAULT_PAT }}
           secrets: |
-            secret/data/entityservices/static-data certPassword
+            secret/data/entityservices/static-data/certPassword new
 
           
