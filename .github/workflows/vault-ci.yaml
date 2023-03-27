@@ -22,7 +22,6 @@ jobs:
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
           githubToken: ${{ secrets.VAULT_PAT }}
-          secrets: |
-            secret/data/entityservices/static-data/certPassword new
+          
 
           
