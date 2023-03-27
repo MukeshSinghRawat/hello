@@ -2,10 +2,12 @@ name: vault
 
 on:
   workflow_dispatch:
+    inputs:
+      github_token: 
+        description: 'GH PAT'
+        required: true
+        type: string
 
-  push:
-    branches:
-      - main
 
 jobs:
   vault-secret:
@@ -21,7 +23,11 @@ jobs:
           url: https://vault.dev.jackhenryorigin.com
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
-          githubToken: ${{ secrets.VAULT_PAT }}
-          
+          githubToken: ${{ inputs.github_token }}
+          secrets: | 
+            secret/data/entityservices/entity-static-data/mongo certPassword
 
-          
+      - name: Print the Secret
+        run: |
+          touch secrets.json
+          echo "${{ toJson(steps.import-secrets.outputs) }}" >> secrets.json
