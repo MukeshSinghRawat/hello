@@ -8,6 +8,8 @@ on:
         required: true
         type: string
 
+env:
+  vault_url: vault.dev.jackhenryorigin.com
 
 jobs:
   vault-secret:
@@ -20,7 +22,7 @@ jobs:
         id: import-secrets
         uses: hashicorp/vault-action@v2.5.0
         with:
-          url: https://vault.dev.jackhenryorigin.com
+          url: ${{ env.vault_url }}
           caCertificate: ${{ vars.DEV_OGN_SVCS_VAULT_CA_CERT }}
           method: github
           githubToken: ${{ inputs.github_token }}
