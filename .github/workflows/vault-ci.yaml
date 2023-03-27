@@ -9,7 +9,7 @@ on:
         type: string
 
 env:
-  vault_url: vault.dev.jackhenryorigin.com
+  vault_url: https://vault.dev.jackhenryorigin.com
 
 jobs:
   vault-secret:
