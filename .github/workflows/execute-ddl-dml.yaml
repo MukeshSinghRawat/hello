@@ -8,7 +8,6 @@ env:
   DDL_SCRIPT_PATH: devops/releases/mongo/ddl/ddl.js
   DML_SCRIPT_PATH: devops/releases/mongo/dml/dml.js 
   AUTH_MECHANISM: MONGODB-X509
-  
 
 jobs:
   js-execution:
@@ -22,9 +21,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x' 
-          
-      - name: Setup TLS Certificate Key File
+
+      - name: Setup Mongosh & TLS Certificate Key File
         run: |
+          wget https://downloads.mongodb.com/compass/mongosh-1.8.0-linux-x64.tgz
+          tar -xvf mongosh-1.8.0-linux-x64.tgz
+          chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
+          mv mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
           touch /tmp/tlsCertificateKeyFile.pem
           echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
 
