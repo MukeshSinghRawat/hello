@@ -1,0 +1,41 @@
+name: execute-ddl-dml
+
+on:
+  workflow_dispatch:
+
+env: 
+  PY_SCRIPT_PATH: devops/execute-ddl-dml.py
+  DDL_SCRIPT_PATH: devops/releases/mongo/ddl/ddl.js
+  DML_SCRIPT_PATH: devops/releases/mongo/dml/dml.js 
+  AUTH_MECHANISM: MONGODB-X509
+  
+
+jobs:
+  js-execution:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x' 
+          
+      - name: Setup TLS Certificate Key File
+        run: |
+          touch /tmp/tlsCertificateKeyFile.pem
+          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
+
+      # In this step, the python script which will execute the ddl and dml scripts. 
+        
+      - name: Execute Py Script
+        run: python ${{ env.PY_SCRIPT_PATH }}
+        env:
+          DDL_SCRIPT_PATH: ${{ env.DDL_SCRIPT_PATH }}
+          DML_SCRIPT_PATH: ${{ env.DML_SCRIPT_PATH }}
+          MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
+          TLS_CERTIFICATE_KEY_FILE_PASSWORD: ${{ secrets.TLS_CERTIFICATE_KEY_FILE_PASSWORD }}
+          TLS_CERTIFICATE_KEY_FILE: /tmp/tlsCertificateKeyFile.pem
+          AUTH_MECHANISM: ${{ env.AUTH_MECHANISM }}
