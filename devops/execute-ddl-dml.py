@@ -12,13 +12,10 @@ mongo_connection_string = os.environ['MONGO_CONNECTION_STRING']
 tls_certificate_key_file = os.environ['TLS_CERTIFICATE_KEY_FILE']
 tls_certificate_key_file_password = os.environ['TLS_CERTIFICATE_KEY_FILE_PASSWORD']
 
-# def execute_js(con_id, list):
-def execute_js(list):
+def execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list):
   for paths in list:
-#     basename = os.path.basename(paths)
-#     execution = "docker cp "+paths+" "+con_id+":/"+basename+"\ndocker exec "+con_id+" mongosh "+basename+"\ndocker exec "+con_id+" mongosh --eval 'db.getMongo().getDBNames()'"
-    execution = ###############################
+    execution = "mongosh "+mongo_connection_string+" --tls --tlsCertificateKeyFile"+tls_certificate_key_file+" --tlsCertificateKeyFilePassword"+tls_certificate_key_file_password+" --authenticationMechanism"+auth_mechanism < paths
     os.system(execution)   
     
-# execute_js(container_id, js_list)
-execute_js(js_list)
+# Calling the function here
+execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list)
