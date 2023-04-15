@@ -18,4 +18,8 @@ def execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificat
     os.system(execution)   
     
 # Calling the function here
-execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list)
+try:
+  execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list)
+ 
+except:
+  print("script execution failed...")
