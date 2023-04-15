@@ -3,7 +3,7 @@
 # import modules
 import os
 
-# Import all variables exposed to the environment
+# Importing all variables exposed to the environment
 list = []
 list.append(os.environ['DDL_SCRIPT_PATH'])
 list.append(os.environ['DML_SCRIPT_PATH'])
@@ -17,7 +17,7 @@ def execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificat
     execution = "mongosh "+mongo_connection_string+" --tls --tlsCertificateKeyFile "+tls_certificate_key_file+" --tlsCertificateKeyFilePassword "+tls_certificate_key_file_password+" --authenticationMechanism "+auth_mechanism < paths
     os.system(execution)   
     
-# Calling the function here
+# Calling the function
 try:
   execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list)
  
