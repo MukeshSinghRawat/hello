@@ -4,9 +4,9 @@
 import os
 
 # Import all variables exposed to the environment
-js_list = []
-js_list.append(os.environ['DDL_SCRIPT_PATH'])
-js_list.append(os.environ['DML_SCRIPT_PATH'])
+list = []
+list.append(os.environ['DDL_SCRIPT_PATH'])
+list.append(os.environ['DML_SCRIPT_PATH'])
 auth_mechanism = os.environ['AUTH_MECHANISM']
 mongo_connection_string = os.environ['MONGO_CONNECTION_STRING']
 tls_certificate_key_file = os.environ['TLS_CERTIFICATE_KEY_FILE']
