@@ -15,8 +15,8 @@ tls_certificate_key_file_password = os.environ['TLS_CERTIFICATE_KEY_FILE_PASSWOR
 def execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list):
   for paths in list:
     if os.path.exists(paths):
-      execution = "mongosh '"+mongo_connection_string+"' --tls --tlsCertificateKeyFile "+tls_certificate_key_file+" --tlsCertificateKeyFilePassword "+tls_certificate_key_file_password+" --authenticationMechanism "+auth_mechanism < paths
-      os.system(execution)   
+      shell_command = "mongosh '"+mongo_connection_string+"' --tls --tlsCertificateKeyFile "+tls_certificate_key_file+" --tlsCertificateKeyFilePassword "+tls_certificate_key_file_password+" --authenticationMechanism "+auth_mechanism < paths
+      os.system(shell_command)   
     else:
       print(paths+" doesn't exist...")
       
