@@ -21,7 +21,7 @@ def execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificat
       print(paths+" doesn't exist...")
       
     
-# Calling the function
+# Calling the 'execute_js' function
 try:
   execute_js(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, list)
  
