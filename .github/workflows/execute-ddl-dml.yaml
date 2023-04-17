@@ -32,21 +32,22 @@ jobs:
         run: |
           wget https://downloads.mongodb.com/compass/mongosh-1.8.0-linux-x64.tgz
           tar -xvf mongosh-1.8.0-linux-x64.tgz
-          chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
-          mv ./mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/
-          echo "TLS_CRT_KEY_FILE=`echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r'`" > $GITHUB_ENV
-          touch ./tlsCertificateKeyFile.pem
-          echo ${{ env.TLS_CRT_KEY_FILE }} > ./tlsCertificateKeyFile.pem
-          cat ./tlsCertificateKeyFile.pem
+          ls 
+#         chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
+#          mv ./mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/
+#          echo "TLS_CRT_KEY_FILE=`echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r'`" > $GITHUB_ENV
+#          touch ./tlsCertificateKeyFile.pem
+#          echo ${{ env.TLS_CRT_KEY_FILE }} > ./tlsCertificateKeyFile.pem
+#          cat ./tlsCertificateKeyFile.pem
 
       # In this step, the python script which will execute the ddl and dml scripts. 
         
-      - name: Execute Py Script
-        run: python ${{ env.PY_SCRIPT_PATH }}
-        env:
-          DDL_SCRIPT_PATH: ${{ env.DDL_SCRIPT_PATH }}
-          DML_SCRIPT_PATH: ${{ env.DML_SCRIPT_PATH }}
-          MONGO_CONNECTION_STRING: ${{ env.MONGO_CONNECTION_STRING }}
+#       - name: Execute Py Script
+#         run: python ${{ env.PY_SCRIPT_PATH }}
+#         env:
+#           DDL_SCRIPT_PATH: ${{ env.DDL_SCRIPT_PATH }}
+#           DML_SCRIPT_PATH: ${{ env.DML_SCRIPT_PATH }}
+#           MONGO_CONNECTION_STRING: ${{ env.MONGO_CONNECTION_STRING }}
 #           TLS_CERTIFICATE_KEY_FILE_PASSWORD: ${{ secrets.TLS_CERTIFICATE_KEY_FILE_PASSWORD }}
 #           TLS_CERTIFICATE_KEY_FILE: /tmp/tlsCertificateKeyFile.pem
 #           AUTH_MECHANISM: ${{ env.AUTH_MECHANISM }}
