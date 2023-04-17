@@ -15,6 +15,8 @@ jobs:
       - name: check pwd
         run : |
           ls -la
+          pwd
+          whoami
 
 #       - name: Retrieve Secrets from Vault
 #         id: import-secrets
