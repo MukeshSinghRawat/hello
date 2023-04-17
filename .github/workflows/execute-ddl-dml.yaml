@@ -44,4 +44,8 @@ jobs:
           ls /usr/local/bin/mongosh
           cd ..
           pwd
+        
+      - name: Shell commands
+        run: |
           touch `pwd`/tlsCertificateKeyFile.pem
+          
