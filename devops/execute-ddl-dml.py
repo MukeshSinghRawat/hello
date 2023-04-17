@@ -22,8 +22,8 @@ def execute_js_scripts(mongo_connection_string, tls_certificate_key_file, tls_ce
   os.system(dml_shell_command)
   
 # Calling the functions
-for js_files in list:
-  if os.path.exists(js_files):  
-    execute_js_scripts(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, js_files)
+for js_files_path in list:
+  if os.path.exists(js_files_path): 
+    execute_js_scripts(mongo_connection_string, tls_certificate_key_file, tls_certificate_key_file_password, auth_mechanism, js_files_path)
   else:
-      sys.exit(js_files+" doesn't exist...")
+    sys.exit(js_files_path+" doesn't exist...")
