@@ -20,6 +20,8 @@ jobs:
         run : |
           ls -la
           pwd
+          cd ./hello
+          pwd
           whoami
 
 #       - name: Retrieve Secrets from Vault
