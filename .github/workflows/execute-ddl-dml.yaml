@@ -43,9 +43,9 @@ jobs:
           chmod +x `pwd`/mongosh-1.8.0-linux-x64/bin/mongosh
           mv `pwd`/mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
           ls /usr/local/bin/mongosh
-          touch `pwd`/tlsCertificateKeyFile.pem
-          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.pem
-          cat `pwd`/tlsCertificateKeyFile.pem
+          touch `pwd`/tlsCertificateKeyFile.txt
+          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.txt
+          cat `pwd`/tlsCertificateKeyFile.txt
 
       # In this step, the python script which will execute the ddl and dml scripts. 
         
