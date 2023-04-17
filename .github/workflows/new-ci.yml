@@ -4,22 +4,23 @@ on:
   workflow_dispatch:
 
 env: 
-  PY_SCRIPT_PATH: scripts/python/execute_ddl_and_dml_js_scripts.py 
-  JS_PATH_1: scripts/javascripts/script1.js 
-  JS_PATH_2: scripts/javascripts/script2.js 
+#   PY_SCRIPT_PATH: scripts/python/execute_ddl_and_dml_js_scripts.py 
+  PY_SCRIPT_PATH: scripts/my.py
+#   JS_PATH_1: scripts/javascripts/script1.js 
+#   JS_PATH_2: scripts/javascripts/script2.js 
 
 jobs:
   js-execution:
     runs-on: ubuntu-latest
-    services:
-      mongo:
-        image: docker.io/mongo:latest
-        ports:
-          - 27017:27017
+#     services:
+#       mongo:
+#         image: docker.io/mongo:latest
+#         ports:
+#           - 27017:27017
     steps:
-      - name: Get the container ID
-        run: |
-          echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}')" >> $GITHUB_ENV
+#       - name: Get the container ID
+#         run: |
+#           echo "CONTAINER_ID=$(docker ps -a | grep -i mongo:latest | awk '{print $1}')" >> $GITHUB_ENV
         
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -34,8 +35,9 @@ jobs:
       - name: Execute Py Script
         run: python ${{env.PY_SCRIPT_PATH}}
         env:
-          MY_SECRET_USERNAME: ${{vars.MONGO_USERNAME}}
-          JS_PATH_1: ${{env.JS_PATH_1}}
-          JS_PATH_2: ${{env.JS_PATH_2}}
-          CONTAINER_ID: ${{env.CONTAINER_ID}}
+          connection_string: ${{ secrets.MONGO_CONNECTION_STRING }}
+#           MY_SECRET_USERNAME: ${{vars.MONGO_USERNAME}}
+#           JS_PATH_1: ${{env.JS_PATH_1}}
+#           JS_PATH_2: ${{env.JS_PATH_2}}
+#           CONTAINER_ID: ${{env.CONTAINER_ID}}
 
