@@ -45,7 +45,10 @@ jobs:
           ls /usr/local/bin/mongosh
           cd ..
           pwd
-          # touch `pwd`/tlsCertificateKeyFile.pem
+          
+      - name: Shell commands
+        run: |
+          touch `pwd`/tlsCertificateKeyFile.pem
           # echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.txt
           # cat `pwd`/tlsCertificateKeyFile.txt
 
