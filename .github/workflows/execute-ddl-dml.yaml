@@ -11,7 +11,6 @@ env:
   PY_SCRIPT_PATH: devops/execute-ddl-dml.py
   DDL_SCRIPT_PATH: devops/releases/mongo/ddl/ddl.js
   DML_SCRIPT_PATH: devops/releases/mongo/dml/dml.js 
-#   AUTH_MECHANISM: MONGODB-X509
   MONGO_CONNECTION_STRING: mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
 
 jobs:
@@ -48,14 +47,3 @@ jobs:
           touch `pwd`/tlsCertificateKeyFile.pem
           echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.txt
           cat `pwd`/tlsCertificateKeyFile.txt
-
-        
-#       - name: Execute Py Script
-#         run: python ${{ env.PY_SCRIPT_PATH }}
-#         env:
-#           DDL_SCRIPT_PATH: ${{ env.DDL_SCRIPT_PATH }}
-#           DML_SCRIPT_PATH: ${{ env.DML_SCRIPT_PATH }}
-#           MONGO_CONNECTION_STRING: ${{ env.MONGO_CONNECTION_STRING }}
-#           TLS_CERTIFICATE_KEY_FILE_PASSWORD: ${{ secrets.TLS_CERTIFICATE_KEY_FILE_PASSWORD }}
-#           TLS_CERTIFICATE_KEY_FILE: /tmp/tlsCertificateKeyFile.pem
-#           AUTH_MECHANISM: ${{ env.AUTH_MECHANISM }}
