@@ -2,6 +2,7 @@
 
 # import modules
 import os
+import os.path
 import sys
 
 # Importing all variables exposed to the environment
