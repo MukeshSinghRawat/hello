@@ -34,8 +34,8 @@ jobs:
           tar -xvf mongosh-1.8.0-linux-x64.tgz
           chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
           mv mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
-#           touch /tmp/tlsCertificateKeyFile.pem
-#           echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
+          touch /tmp/tlsCertificateKeyFile.pem
+          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
 
       # In this step, the python script which will execute the ddl and dml scripts. 
         
