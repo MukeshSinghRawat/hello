@@ -40,7 +40,7 @@ jobs:
           ls -la
           pwd
           whoami
-          chmod +x `pwd`/hello/mongosh-1.8.0-linux-x64/bin/mongosh
+          chmod +x `pwd`/mongosh-1.8.0-linux-x64/bin/mongosh
           mv `pwd`/mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
           ls /usr/local/bin/mongosh
 #          echo "TLS_CRT_KEY_FILE=`echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r'`" > $GITHUB_ENV
