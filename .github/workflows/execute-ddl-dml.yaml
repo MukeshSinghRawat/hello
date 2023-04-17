@@ -33,6 +33,8 @@ jobs:
           wget https://downloads.mongodb.com/compass/mongosh-1.8.0-linux-x64.tgz
           tar -xvf mongosh-1.8.0-linux-x64.tgz
           ls 
+          pwd
+          whoami
 #         chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
 #          mv ./mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/
 #          echo "TLS_CRT_KEY_FILE=`echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r'`" > $GITHUB_ENV
