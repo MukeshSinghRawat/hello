@@ -45,5 +45,3 @@ jobs:
           cd ..
           pwd
           touch `pwd`/tlsCertificateKeyFile.pem
-          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.pem
-          cat `pwd`/tlsCertificateKeyFile.pem
