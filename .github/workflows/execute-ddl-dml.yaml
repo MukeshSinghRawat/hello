@@ -49,4 +49,4 @@ jobs:
         run: |
           touch `pwd`/tlsCertificateKeyFile.pem
           ls `pwd`
-          
+          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.pem
