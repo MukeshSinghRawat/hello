@@ -24,7 +24,7 @@ def execute_js_scripts(mongo_connection_string, js_script_path):
   
 # Calling the functions
 for js_files_path in list:
-  if os.path.exists(js_files_path) == true: 
+  if os.path.exists(js_files_path) == True: 
     execute_js_scripts(mongo_connection_string, js_files_path)
   else:
     sys.exit(js_files_path+" doesn't exist...")
