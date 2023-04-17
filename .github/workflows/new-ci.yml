@@ -2,6 +2,10 @@ name: ddl-and-dml-js-scripts-execution
 
 on:
   workflow_dispatch:
+  
+  push:
+    branches:
+      - main
 
 env: 
 #   PY_SCRIPT_PATH: scripts/python/execute_ddl_and_dml_js_scripts.py 
