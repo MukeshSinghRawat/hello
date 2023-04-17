@@ -44,7 +44,8 @@ jobs:
           mv `pwd`/mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
           ls /usr/local/bin/mongosh
           cd ..
-          touch `pwd`/tlsCertificateKeyFile.pem
+          pwd
+          # touch `pwd`/tlsCertificateKeyFile.pem
           # echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} | tr -d '\r' > `pwd`/tlsCertificateKeyFile.txt
           # cat `pwd`/tlsCertificateKeyFile.txt
 
