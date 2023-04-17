@@ -3,6 +3,10 @@ name: execute-ddl-dml
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: /home/runner/work
+    
 env: 
   PY_SCRIPT_PATH: devops/execute-ddl-dml.py
   DDL_SCRIPT_PATH: devops/releases/mongo/ddl/ddl.js
@@ -30,6 +34,7 @@ jobs:
 
       - name: Setup Mongosh & TLS Certificate Key File
         run: |
+          cd `pwd`/hello
           wget https://downloads.mongodb.com/compass/mongosh-1.8.0-linux-x64.tgz
           tar -xvf mongosh-1.8.0-linux-x64.tgz
           ls -la
