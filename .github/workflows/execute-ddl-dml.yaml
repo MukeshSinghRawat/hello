@@ -32,7 +32,7 @@ jobs:
         run: |
           wget https://downloads.mongodb.com/compass/mongosh-1.8.0-linux-x64.tgz
           tar -xvf mongosh-1.8.0-linux-x64.tgz
-          ls 
+          ls -la
           pwd
           whoami
 #         chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
