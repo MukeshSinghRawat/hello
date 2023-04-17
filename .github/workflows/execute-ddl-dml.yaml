@@ -48,4 +48,5 @@ jobs:
       - name: Shell commands
         run: |
           touch `pwd`/tlsCertificateKeyFile.pem
+          ls `pwd`
           
