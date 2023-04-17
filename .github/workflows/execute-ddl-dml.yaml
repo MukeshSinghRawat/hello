@@ -7,11 +7,17 @@ env:
   PY_SCRIPT_PATH: devops/execute-ddl-dml.py
   DDL_SCRIPT_PATH: devops/releases/mongo/ddl/ddl.js
   DML_SCRIPT_PATH: devops/releases/mongo/dml/dml.js 
-  AUTH_MECHANISM: MONGODB-X509
+#   AUTH_MECHANISM: MONGODB-X509
+  MONGO_CONNECTION_STRING: mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
 
 jobs:
   js-execution:
     runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: bitnami/mongodb:latest
+        ports:
+          - 27017:27017
   
     steps:
       - name: Checkout repository
@@ -28,8 +34,8 @@ jobs:
           tar -xvf mongosh-1.8.0-linux-x64.tgz
           chmod +x mongosh-1.8.0-linux-x64/bin/mongosh
           mv mongosh-1.8.0-linux-x64/bin/mongosh /usr/local/bin/mongosh
-          touch /tmp/tlsCertificateKeyFile.pem
-          echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
+#           touch /tmp/tlsCertificateKeyFile.pem
+#           echo ${{ secrets.TLS_CERTIFICATE_KEY_FILE }} > /tmp/tlsCertificateKeyFile.pem
 
       # In this step, the python script which will execute the ddl and dml scripts. 
         
@@ -38,7 +44,7 @@ jobs:
         env:
           DDL_SCRIPT_PATH: ${{ env.DDL_SCRIPT_PATH }}
           DML_SCRIPT_PATH: ${{ env.DML_SCRIPT_PATH }}
-          MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
-          TLS_CERTIFICATE_KEY_FILE_PASSWORD: ${{ secrets.TLS_CERTIFICATE_KEY_FILE_PASSWORD }}
-          TLS_CERTIFICATE_KEY_FILE: /tmp/tlsCertificateKeyFile.pem
-          AUTH_MECHANISM: ${{ env.AUTH_MECHANISM }}
+          MONGO_CONNECTION_STRING: ${{ env.MONGO_CONNECTION_STRING }}
+#           TLS_CERTIFICATE_KEY_FILE_PASSWORD: ${{ secrets.TLS_CERTIFICATE_KEY_FILE_PASSWORD }}
+#           TLS_CERTIFICATE_KEY_FILE: /tmp/tlsCertificateKeyFile.pem
+#           AUTH_MECHANISM: ${{ env.AUTH_MECHANISM }}
