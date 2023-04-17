@@ -2,6 +2,10 @@ name: vault
 
 on:
   workflow_dispatch:
+  
+defaults:
+  run:
+    working-directory: /home/runner/work
     
 env:
   vault_url: https://vault.dev.jackhenryorigin.com
@@ -11,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:   
-#       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: check pwd
         run : |
           ls -la
