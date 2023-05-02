@@ -8,7 +8,7 @@ on:
   
 jobs:
   DailyCronJob:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Stale branch check
     steps:
       
