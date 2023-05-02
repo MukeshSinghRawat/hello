@@ -23,7 +23,7 @@ jobs:
       - id: step1
         name: Branches having the last commit date older than a week
         run: |     
-            echo { "Name": "Mukesh" } > /tmp/staticDataService.json
+            echo {"Name":"Mukesh"} > /tmp/staticDataService.json
         continue-on-error: true
       
       - name: Send custom data to Slack workflow
