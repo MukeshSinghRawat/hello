@@ -19,10 +19,12 @@ jobs:
         
       - name: Check Stale Branches
         run: |
-          echo 'STALE_BRANCH=`git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main`' >> $GITHUB_ENV        
+          git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main
+          git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main > /tmp/stale_branch.txt
+        continue-on-error: true
       
       - name: ECHO
-        run: echo ${{ env.STALE_BRANCH }}
+        run: cat /tmp/stale_branch.txt
         
       - name: Send custom data to Slack workflow
         run : |
