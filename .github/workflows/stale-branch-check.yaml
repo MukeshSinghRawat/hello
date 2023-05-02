@@ -13,16 +13,10 @@ jobs:
     steps:
       - name : Checkout entity-static-data repo
         uses: actions/checkout@v3
-        with:
-          repository: 'MukeshSinghRawat/hello'
-          fetch-depth: 0
-          set-safe-directory: false
-          path: static-data
 
       - id: step1
         name: Branches having the last commit date older than a week
-        run: |
-            cd static-data            
+        run: |         
             git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main
             git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main > /tmp/staticDataService.txt  
         continue-on-error: true
