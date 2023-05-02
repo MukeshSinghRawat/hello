@@ -30,7 +30,10 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          payload-file-path: /tmp/staticDataService.json
+          payload: |
+            {
+              "key": "value",
+              "foo": "bar"
+            }
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
