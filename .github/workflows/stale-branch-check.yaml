@@ -21,6 +21,9 @@ jobs:
         run: |
           echo 'STALE_BRANCH=`git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main`' >> $GITHUB_ENV        
       
+      - name: ECHO
+        run: echo ${{ env.STALE_BRANCH }}
+        
       - name: Send custom data to Slack workflow
         run : |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Actions-Notifier\", \"text\": \"${{ env.STALE_BRANCH }}\"}" ${{ secrets.WEBHOOK_URL }}
+          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"stale-branch-notifier\", \"text\": \"${{ env.STALE_BRANCH }}\"}" ${{ secrets.WEBHOOK_URL }}
