@@ -28,4 +28,4 @@ jobs:
       
       - name: Send custom data to Slack workflow
         run : |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Action-Notify\", \"text\": \"This is posted to #new-test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.WEBHOOK_URL }}
+          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Actions-Notifier\", \"text\": \"This is posted to #new-test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.WEBHOOK_URL }}
