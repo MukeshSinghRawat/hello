@@ -1,0 +1,41 @@
+name: Notify About Stale Branches
+
+on:
+  schedule:
+    - cron: "59 23 * * *"  # Triggers the workflow everyday at 11:59 PM
+    
+  workflow_dispatch:
+
+env:
+  REPO: JHADigitalCore/entity-services-entity-service
+  
+
+jobs:
+  DailyCronJob:
+    runs-on: ubuntu-latest
+    name: Stale branch check
+    steps:
+      - name : Checkout entity-static-data repo
+        uses: actions/checkout@v3
+        with:
+          repository: "{{ env.REPO }}"
+          fetch-depth: 0
+          set-safe-directory: false
+          path: static-data
+
+      - id: step1
+        name: Branches having the last commit date older than a week
+        run: |
+            cd static-data            
+            git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main
+            git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main > /tmp/staticDataService.txt  
+        continue-on-error: true
+      
+      - name: Send custom data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload-file-path: "/tmp/staticDataService.txt"
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
