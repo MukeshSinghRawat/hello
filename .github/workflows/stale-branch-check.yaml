@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO: JHADigitalCore/entity-services-entity-service
+  REPO: MukeshSinghRawat/hello
   
 
 jobs:
