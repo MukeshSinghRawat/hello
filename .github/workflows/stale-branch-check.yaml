@@ -22,6 +22,7 @@ jobs:
         
       - name: Check Stale Branches
         run: |
+          ls && pwd
           cd repo1
           git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main
           git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main > /tmp/stale_branch.txt
