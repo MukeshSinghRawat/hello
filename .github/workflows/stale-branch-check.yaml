@@ -32,8 +32,7 @@ jobs:
         with:
           payload: |
             {
-              "key": "value",
-              "foo": "bar"
+              "Name": "Mukesh"
             }
         env:
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
