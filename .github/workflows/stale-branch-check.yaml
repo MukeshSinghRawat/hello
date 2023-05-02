@@ -7,9 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  REPO: MukeshSinghRawat/hello
+  REPO: 'MukeshSinghRawat/hello'
   
-
 jobs:
   DailyCronJob:
     runs-on: ubuntu-latest
