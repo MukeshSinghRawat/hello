@@ -35,4 +35,4 @@ jobs:
               "Name": "Mukesh"
             }
         env:
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+          SLACK_WEBHOOK_URL: "{{ secrets.WEBHOOK_URL}}"
