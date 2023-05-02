@@ -25,11 +25,8 @@ jobs:
         run: |     
             git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main
             git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main > /tmp/staticDataService.txt  
+            cat /tmp/staticDataService.txt
         continue-on-error: true
-        
-      - name: CAT the file
-        run: |
-          cat /tmp/staticDataService.txt
       
       - name: Send custom data to Slack workflow
         id: slack
