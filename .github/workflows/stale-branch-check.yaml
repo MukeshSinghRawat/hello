@@ -27,13 +27,5 @@ jobs:
         continue-on-error: true
       
       - name: Send custom data to Slack workflow
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          payload: |
-            {
-              "Name": "Mukesh"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        run : |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Action-Notify\", \"text\": \"This is posted to #new-test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.WEBHOOK_URL }}
