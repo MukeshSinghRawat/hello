@@ -35,4 +35,4 @@ jobs:
               "Name": "Mukesh"
             }
         env:
-          SLACK_WEBHOOK_URL: "{{ secrets.WEBHOOK_URL}}"
+          SLACK_WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
