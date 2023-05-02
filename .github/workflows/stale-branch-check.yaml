@@ -17,15 +17,10 @@ jobs:
         with:
           repository: MukeshSinghRawat/hello
         
-      - name: PWD
-        run: which git && pwd && ls
-
-      - id: step1
-        name: Branches having the last commit date older than a week
-        run: |     
-            echo {"Name":"Mukesh"} > /tmp/staticDataService.json
-        continue-on-error: true
+      - name: Check Stale Branches
+        run: |
+          echo "STALE_BRANCH=`git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)   [%(authorname)]" | grep -v HEAD | sort -r | grep -i "week\|month\|year" | grep -v origin/main`" >> $GITHUB_ENV        
       
       - name: Send custom data to Slack workflow
         run : |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Actions-Notifier\", \"text\": \"This is posted to #new-test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.WEBHOOK_URL }}
+          curl -X POST --data-urlencode "payload={\"channel\": \"#new-test\", \"username\": \"Actions-Notifier\", \"text\": \"${{ env.STALE_BRANCH }}\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.WEBHOOK_URL }}
