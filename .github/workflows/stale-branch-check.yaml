@@ -23,14 +23,14 @@ jobs:
       - id: step1
         name: Branches having the last commit date older than a week
         run: |     
-            echo "Mukesh" > /tmp/staticDataService.txt
+            echo { "Name": "Mukesh" } > /tmp/staticDataService.json
         continue-on-error: true
       
       - name: Send custom data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          payload-file-path: "/tmp/staticDataService.txt"
+          payload-file-path: "/tmp/staticDataService.json"
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
