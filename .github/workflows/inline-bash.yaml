@@ -20,6 +20,7 @@ jobs:
             echo "SIZE=`stat -c %s '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
             
       - name: Print
+        if: ${{ steps.output.outputs.SIZE == 7 }}
         run: |
-            echo "${{ steps.output.outputs.SIZE }}"
+            echo "Size is 7"
               
