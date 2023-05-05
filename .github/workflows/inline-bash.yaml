@@ -15,10 +15,7 @@ jobs:
 
 
       - name: Output
-        run: echo "file_size=$(stat -c %s '/tmp/sample.txt')" >> $GITHUB_OUTPUT    
-        
-      - name: Check if statement
-        if: ${{ env.file_size != 0 }}
         run: |
-            echo "File is not empty."
+            echo "file_size=$(stat -c %s '/tmp/sample.txt')" >> $GITHUB_OUTPUT    
+            echo ${{ env.file_size }}
               
