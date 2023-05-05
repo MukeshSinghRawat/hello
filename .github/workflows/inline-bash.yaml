@@ -20,7 +20,7 @@ jobs:
             echo "size=`wc -l < '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
             
       - name: Print
-        if: ${{ steps.file_size.outputs.size != 0 }}
+        if: ${{ steps.file_size.outputs.size > 1 }}
         run: |
             echo ${{ steps.file_size.outputs.size }}
             echo "File is not empty."
