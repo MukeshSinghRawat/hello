@@ -17,7 +17,7 @@ jobs:
       - name: Output
         id: file_size
         run: |
-            echo "size=`stat -c %s '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
+            echo "size=`wc -l < '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
             
       - name: Print
         if: ${{ steps.file_size.outputs.size != 0 }}
