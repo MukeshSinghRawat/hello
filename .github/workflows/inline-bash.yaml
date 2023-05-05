@@ -12,10 +12,13 @@ jobs:
       - name: Make a file
         run : |
             echo "Mukesh" > /tmp/sample.txt
-            
+
+
+      - name: Output
+        run: echo "file_size=$(stat -c %s '/tmp/sample.txt')" >> $GITHUB_OUTPUT    
+        
       - name: Check if statement
+        if: ${{ env.file_size != 0 }}
         run: |
-            if [ $(stat -c %s "/tmp/sample.txt") -ne 0 ]; then
-              echo "Jai mata di"
-            fi
+            echo "File is not empty."
               
