@@ -15,7 +15,11 @@ jobs:
 
 
       - name: Output
+        id: output
         run: |
             echo "SIZE=`stat -c %s '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
-            echo "${{ outputs.SIZE }}"
+            
+      - name: Print
+        run: |
+            echo "${{ step.output.outputs.SIZE }}"
               
