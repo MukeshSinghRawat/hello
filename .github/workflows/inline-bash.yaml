@@ -16,6 +16,6 @@ jobs:
 
       - name: Output
         run: |
-            echo "file_size=$(stat -c %s '/tmp/sample.txt')" >> $GITHUB_OUTPUT    
+            echo "file_size=$(stat -c %s '/tmp/sample.txt')" >> $GITHUB_ENV  
             echo ${{ env.file_size }}
               
