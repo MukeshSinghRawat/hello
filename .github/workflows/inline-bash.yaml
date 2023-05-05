@@ -15,5 +15,7 @@ jobs:
             
       - name: Check if statement
         run: |
-            if [ $(stat -c %s "/tmp/sample.txt") -ne 0 ]; then; echo "Jai mata di"; fi
+            if [ $(stat -c %s "/tmp/sample.txt") -ne 0 ]; then
+              echo "Jai mata di"
+            fi
               
