@@ -15,12 +15,12 @@ jobs:
 
 
       - name: Output
-        id: output
+        id: file_size
         run: |
-            echo "SIZE=`stat -c %s '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
+            echo "size=`stat -c %s '/tmp/sample.txt'`" >> $GITHUB_OUTPUT
             
       - name: Print
-        if: ${{ steps.output.outputs.SIZE != 7 }}
+        if: ${{ steps.file_size.outputs.size != 0 }}
         run: |
-            echo "Size is 7"
+            echo "File is not empty."
               
