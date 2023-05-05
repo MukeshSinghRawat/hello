@@ -21,5 +21,5 @@ jobs:
             
       - name: Print
         run: |
-            echo "${{ step.output.outputs.SIZE }}"
+            echo "${{ steps.output.outputs.SIZE }}"
               
