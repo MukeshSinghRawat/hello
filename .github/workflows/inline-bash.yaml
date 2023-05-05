@@ -1,0 +1,19 @@
+name: inline-bash
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inline-bash:
+    runs-on: ubuntu-latest
+
+    steps:   
+      - uses: actions/checkout@v2
+      - name: Make a file
+        run : |
+            echo "Mukesh" > /tmp/sample.txt
+            
+      - name: Check if statement
+        run: |
+            if [ $(stat -c %s "/tmp/sample.txt") -ne 0 ]; then
+              echo "Jai mata di"
