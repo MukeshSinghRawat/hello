@@ -22,5 +22,6 @@ jobs:
       - name: Print
         if: ${{ steps.file_size.outputs.size != 0 }}
         run: |
+            echo ${{ steps.file_size.outputs.size }}
             echo "File is not empty."
               
