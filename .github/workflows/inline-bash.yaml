@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Make a file
         run : |
-            echo "" > /tmp/stale_branch.txt
+            echo "." > /tmp/stale_branch.txt
 
 
       - name: Output
