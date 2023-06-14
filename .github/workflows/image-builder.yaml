@@ -12,23 +12,11 @@ jobs:
       with:
         # Checkout as many commits as needed for the diff
         fetch-depth: 2
-    - shell: pwsh
-      # Give an id to the step, so we can reference it later
-      id: check_file_changed
-      run: |
-        # Diff HEAD with the previous commit
-        $diff = git diff --name-only HEAD^ HEAD
-
-        # Check if a file under scripts/ has changed (added, modified, deleted)
-        $SourceDiff = $diff | Where-Object { $_ -match '^scripts/' }
-        $HasDiff = $SourceDiff.Length -gt 0
-
-        # Set the output named "docs_changed"
-        # Write-Host "::set-output name=docs_changed::$HasDiff"
-        echo "docs_changed=$HasDiff" >> "$GITHUB_OUTPUT"
         
-    # Run the step only with "docs_changed" equals "True"
-    - shell: pwsh
-      # steps.<step_id>.outputs.<output name>
-      if: ${{ steps.check_file_changed.outputs.docs_changed == 'True' }}
-      run: echo "Files changed!"
+    - name: Run task only if specific folder is updated
+      run: |
+        if git diff --name-only HEAD^ HEAD | grep -q "^scripts/"; then
+          echo "Files chnaged under `scripts` folder."
+        else
+          echo "No files chnaged under `scripts` folder."
+        fi
