@@ -25,7 +25,7 @@ jobs:
 
         # Set the output named "docs_changed"
         # Write-Host "::set-output name=docs_changed::$HasDiff"
-        echo "docs_changed=$HasDiff" >> "$GITHUB_OUTPUT"
+        echo "docs_changed=$($HasDiff)" >> "$GITHUB_OUTPUT"
      
     # Run the step only with "docs_changed" equals "True"
     - shell: pwsh
