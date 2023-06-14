@@ -22,4 +22,5 @@ jobs:
         fi
         
     - name: Check if files changed
-      run: echo ${{ env.files_changed }}
+      if: ${{ env.files_changed == 'true' }}
+      run: echo "files changed"
