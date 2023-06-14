@@ -25,10 +25,10 @@ jobs:
 
         # Set the output named "docs_changed"
         # Write-Host "::set-output name=docs_changed::$HasDiff"
-        echo "docs_changed=$($HasDiff)" >> "$GITHUB_OUTPUT"
-     
+        echo "docs_changed=`echo ${HasDiff}`" >> "$GITHUB_OUTPUT"
+        
     # Run the step only with "docs_changed" equals "True"
-    - shell: pwsh
+    - name: Result based on above output
       # steps.<step_id>.outputs.<output name>
       if: steps.check_file_changed.outputs.docs_changed == 'True'
       run: echo "Files changed!"
