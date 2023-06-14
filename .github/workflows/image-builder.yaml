@@ -24,10 +24,11 @@ jobs:
         $HasDiff = $SourceDiff.Length -gt 0
 
         # Set the output named "docs_changed"
-        Write-Host "::set-output name=docs_changed::$HasDiff"
+        # Write-Host "::set-output name=docs_changed::$HasDiff"
+        echo "docs_changed=$HasDiff" >> $GITHUB_ENV
 
     # Run the step only with "docs_changed" equals "True"
     - shell: pwsh
       # steps.<step_id>.outputs.<output name>
-      if: steps.check_file_changed.outputs.docs_changed == 'True'
+      if: ${{ env.docs_changed == 'True' }}
       run: echo "Files changed!"
