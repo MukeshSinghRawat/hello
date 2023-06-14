@@ -15,7 +15,7 @@ jobs:
         
     - name: Run task only if specific folder is updated
       run: |
-        if git diff --name-only HEAD^ HEAD | grep -q '^scripts/'; then
+        if git diff --name-only HEAD^ HEAD | egrep -q '^scripts/|^devops/'; then
           echo "files_changed=true" >> $GITHUB_ENV
         else
           echo "files_changed=false" >> $GITHUB_ENV
