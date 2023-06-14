@@ -16,7 +16,11 @@ jobs:
     - name: Run task only if specific folder is updated
       run: |
         if git diff --name-only HEAD^ HEAD | grep -q "^scripts/"; then
-          echo "Files chnaged under 'scripts' folder."
+          echo "FILES_CHANGED=TRUE" >> $GITHUB_ENV
         else
-          echo "No files chnaged under 'scripts' folder."
+          echo "FILES_CHANGED=FALSE" >> $GITHUB_ENV
         fi
+        
+    - name: Check if files changed
+      if: ${{ env.FILES_CHANGED == TRUE }}
+      run: echo "Files changed"
