@@ -27,6 +27,9 @@ jobs:
         # Write-Host "::set-output name=docs_changed::$HasDiff"
         echo "docs_changed=$HasDiff" >> $GITHUB_ENV
 
+    - name: echo ENV VAR
+      run: echo ${{ env.docs_changed }}
+      
     # Run the step only with "docs_changed" equals "True"
     - shell: pwsh
       # steps.<step_id>.outputs.<output name>
