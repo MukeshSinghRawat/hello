@@ -1,1 +1,1 @@
-# init
+# This is `init` Dockerfile.
