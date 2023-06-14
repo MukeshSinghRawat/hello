@@ -16,7 +16,7 @@ jobs:
     - name: Run task only if specific folder is updated
       run: |
         if git diff --name-only HEAD^ HEAD | grep -q "^scripts/"; then
-          echo "Files chnaged under `scripts` folder."
+          echo "Files chnaged under 'scripts' folder."
         else
-          echo "No files chnaged under `scripts` folder."
+          echo "No files chnaged under 'scripts' folder."
         fi
