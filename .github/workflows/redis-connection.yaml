@@ -27,4 +27,4 @@ jobs:
           sudo apt install redis-tools --yes
           
       - name: Test connection
-        run: redis-cli ping
+        run: redis-cli -h localhost
