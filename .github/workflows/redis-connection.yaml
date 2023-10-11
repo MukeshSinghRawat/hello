@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+      - '**/main'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Redis
+        run: docker run -d --network host -e "ALLOW_EMPTY_PASSWORD=yes" bitnami/redis:latest
+
+      - name: Install Redis-cli
+        run: |
+          sudo apt install lsb-release curl gpg
+          curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+          sudo apt-get update
+          sudo apt-get install redis
+          
+      - name: Test connection
+        run: redis-cli ping
